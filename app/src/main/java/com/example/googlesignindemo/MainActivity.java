@@ -98,9 +98,8 @@ public class MainActivity extends AppCompatActivity
         // getPhotoUrl(): Gets the photo url of the signed in user.
         // Only non-null if requestProfile() is configured and user does have a Google+ profile picture.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestScopes(new Scope(Scopes.PROFILE))
+                // .requestScopes(new Scope(Scopes.PROFILE))
                 .requestScopes(new Scope(Scopes.PLUS_LOGIN))
-                .requestProfile()
                 .requestEmail()
                 .build();
         // [END configure_signin]
