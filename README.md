@@ -3,9 +3,7 @@ Simple Google Sign-In Android Application
 
 ```
 GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestScopes(new Scope(Scopes.PROFILE))
                 .requestScopes(new Scope(Scopes.PLUS_LOGIN))
-                .requestProfile()
                 .requestEmail()
                 .build();
 
