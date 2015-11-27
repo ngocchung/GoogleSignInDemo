@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity
         // getPhotoUrl(): Gets the photo url of the signed in user.
         // Only non-null if requestProfile() is configured and user does have a Google+ profile picture.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                // .requestScopes(new Scope(Scopes.PROFILE))
                 .requestScopes(new Scope(Scopes.PLUS_LOGIN))
                 .requestEmail()
                 .build();
@@ -164,14 +163,22 @@ public class MainActivity extends AppCompatActivity
             handleSignInResult(result);
 
             // G+
-            Person person  = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            Log.i(TAG, "--------------------------------");
-            Log.i(TAG, "Display Name: " + person.getDisplayName());
-            Log.i(TAG, "Gender: " + person.getGender());
-            Log.i(TAG, "AboutMe: " + person.getAboutMe());
-            Log.i(TAG, "Birthday: " + person.getBirthday());
-            Log.i(TAG, "Current Location: " + person.getCurrentLocation());
-            Log.i(TAG, "Language: " + person.getLanguage());
+            if (mGoogleApiClient.hasConnectedApi(Plus.API)) {
+                Person person  = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+                if (person != null) {
+                    Log.i(TAG, "--------------------------------");
+                    Log.i(TAG, "Display Name: " + person.getDisplayName());
+                    Log.i(TAG, "Gender: " + person.getGender());
+                    Log.i(TAG, "About Me: " + person.getAboutMe());
+                    Log.i(TAG, "Birthday: " + person.getBirthday());
+                    Log.i(TAG, "Current Location: " + person.getCurrentLocation());
+                    Log.i(TAG, "Language: " + person.getLanguage());
+                } else {
+                    Log.e(TAG, "Error!");
+                }
+            } else {
+                Log.e(TAG, "Google+ not connected");
+            }
         }
     }
 
