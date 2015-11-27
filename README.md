@@ -20,3 +20,5 @@ Reference sources:
 [Try Sign-In for Android](https://developers.google.com/identity/sign-in/android/start)
 
 [Add Sign-In to your existing app.](https://developers.google.com/identity/sign-in/android/start-integrating)
+
+[Authenticating Your Client](https://developers.google.com/android/guides/client-auth)
